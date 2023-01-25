@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:taks_management_app/theme.dart';
+import 'package:taks_management_app/core/theme.dart';
 
 void main() {
   runApp(const MyApp());
