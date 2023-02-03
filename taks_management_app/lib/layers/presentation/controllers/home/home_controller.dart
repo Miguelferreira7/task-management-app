@@ -41,7 +41,7 @@ class HomeController {
 Color returnColorOfPriority(String priority) {
   String string = priority.toLowerCase().trim();
   if (string.contains('high')) {
-    return Color(0xFFE16262);
+    return const Color(0xFFE16262);
   } else if (string.contains('medium')) {
     return  const Color(0xFFB8C36E);
   } else {
