@@ -9,10 +9,10 @@ import 'package:taks_management_app/layers/domain/usecases/get_list_backlogs/get
 GetListBackLogsDatasource datasource = GetListBacklogsDatasourceImp();
 GetListBackLogsRepositoryImp repository =
     GetListBackLogsRepositoryImp(datasource);
+GetListBacklogsUseCase useCase = GetListBacklogsUseCaseImp(repository);
 
 void main() {
   test("should return a list of backlogs have a lenght than 0", () async {
-    GetListBacklogsUseCase useCase = GetListBacklogsUseCaseImp(repository);
     List<BackLogEntity> result = [];
     var request = await useCase();
     request.fold((l) => result = [], (r) => result.addAll(r));

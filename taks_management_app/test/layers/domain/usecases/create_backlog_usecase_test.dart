@@ -7,11 +7,11 @@ import 'package:taks_management_app/layers/domain/usecases/create_backlog/create
 import 'package:taks_management_app/layers/domain/usecases/create_backlog/create_backlog_usecase_imp.dart';
 
 void main() {
-      CreateBacklogDatasource datasource = CreateBacklogDataSourceImp();
-    CreateBacklogRepositoryImp repository =
-        CreateBacklogRepositoryImp(datasource);
+  CreateBacklogDatasource datasource = CreateBacklogDataSourceImp();
+  CreateBacklogRepositoryImp repository =
+      CreateBacklogRepositoryImp(datasource);
+  CreateBacklogUseCase useCase = CreateBacklogUseCaseImp(repository);
   test("should return sucess to create a backlog", () async {
-
     BackLogEntity backlog = BackLogEntity(
         titulo: 'teste',
         prioridade: 'high',
@@ -20,15 +20,12 @@ void main() {
         dataInicio: DateTime.now(),
         dataFinal: DateTime.now());
 
-    
-    var request = await repository(backlog);
-    
+    final request = await useCase(backlog);
 
     expect(true, request);
   });
 
   test("should return failure to create a backlog", () async {
-
     BackLogEntity backlog = BackLogEntity(
         titulo: '',
         prioridade: 'high',
@@ -37,11 +34,8 @@ void main() {
         dataInicio: DateTime.now(),
         dataFinal: DateTime.now());
 
- 
+    final request = await useCase(backlog);
 
-    var request = await repository(backlog);
-   
-
-    expect( false , request);
+    expect(false, request);
   });
 }

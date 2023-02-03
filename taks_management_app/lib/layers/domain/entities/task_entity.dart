@@ -1,19 +1,19 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 
 class TaskEntity {
-  int? idBacklogPai;
-  int? id;
-  String? titulo;
-  String? descricao;
-  DateTime? dataInicio;
-  DateTime? dataFinal;
+  int idBacklogPai;
+  int id;
+  String titulo;
+  String descricao;
+  DateTime dataInicio;
+  DateTime dataFinal;
   TaskEntity({
-    this.idBacklogPai,
-    this.id,
-    this.titulo,
-    this.descricao,
-    this.dataInicio,
-    this.dataFinal,
+   required this.idBacklogPai,
+   required this.id,
+   required this.titulo,
+   required this.descricao,
+   required this.dataInicio,
+   required this.dataFinal,
   });
 
   // Map<String, dynamic> toMap() {
