@@ -3,32 +3,32 @@ import 'package:flutter/material.dart';
 import 'package:taks_management_app/core/utils/status_backlog_enum.dart';
 import 'package:taks_management_app/layers/domain/entities/backlog_entity.dart';
 
-class HomeController {
-  HomeController();
+class HomePageController {
+  HomePageController();
 
   List<String> listOptionsFilter = [
     StatusBacklogEnumMap[StatusBacklogEnum.completed]!,
     StatusBacklogEnumMap[StatusBacklogEnum.upcoming]!,
     StatusBacklogEnumMap[StatusBacklogEnum.inProgress]!,
   ];
+  ScrollController scrollController = ScrollController();
 
   List<BackLogEntity> mockListBacklogs = [
-
-   BackLogEntity(
+    BackLogEntity(
         titulo: 'teste',
         prioridade: 'high',
         id: 0,
         descricao: 'teste descricao',
         dataInicio: DateTime.now(),
         dataFinal: DateTime.now()),
-   BackLogEntity(
+    BackLogEntity(
         titulo: 'teste2',
         prioridade: 'low',
         id: 0,
         descricao: 'teste descricao',
         dataInicio: DateTime.now(),
         dataFinal: DateTime.now()),
-   BackLogEntity(
+    BackLogEntity(
         titulo: 'teste2',
         prioridade: 'medium',
         id: 0,
@@ -37,23 +37,20 @@ class HomeController {
         dataFinal: DateTime.now()),
   ];
 
-
-Color returnColorOfPriority(String priority) {
-  String string = priority.toLowerCase().trim();
-  if (string.contains('high')) {
-    return const Color(0xFFE16262);
-  } else if (string.contains('medium')) {
-    return  const Color(0xFFB8C36E);
-  } else {
-    return  const Color(0xFF71EE7E);
+  Color returnColorOfPriority(String priority) {
+    String string = priority.toLowerCase().trim();
+    if (string.contains('high')) {
+      return const Color(0xFFE16262);
+    } else if (string.contains('medium')) {
+      return const Color(0xFFB8C36E);
+    } else {
+      return const Color(0xFF71EE7E);
+    }
   }
-}
 
-String setFirstCharacterToUpperCase(String string) {
-  String newString = string.replaceFirst(string[0], string[0].toUpperCase());
+  String setFirstCharacterToUpperCase(String string) {
+    String newString = string.replaceFirst(string[0], string[0].toUpperCase());
 
-  return newString;
-}
-
-
+    return newString;
+  }
 }
