@@ -1,56 +1,35 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
-import 'dart:convert';
-
+import 'package:isar/isar.dart';
 import 'package:taks_management_app/layers/domain/entities/task_entity.dart';
 
+part 'backlog_entity.g.dart';
+
+@collection
 class BackLogEntity {
-  int id;
-  String titulo;
-  String descricao;
-  String prioridade;
-  DateTime dataInicio;
-  DateTime dataFinal;
-  List<TaskEntity>? listaDeTasks;
+  Id id;
+  String title;
+  String description;
+  String priority;
+  DateTime initialData;
+  DateTime finalData;
+
+  List<TaskEntity>? taskList;
+
   BackLogEntity({
     required this.id,
-    required this.titulo,
-    required this.descricao,
-    required this.prioridade,
-    required this.dataInicio,
-    required this.dataFinal,
-    this.listaDeTasks,
+    required this.title,
+    required this.description,
+    required this.priority,
+    required this.initialData,
+    required this.finalData,
+    this.taskList
   });
 
   bool verifyBacklogIsValid() {
-    if (titulo.isNotEmpty && descricao.isNotEmpty) {
+    if (description != null && description!.isNotEmpty) {
       return true;
     } else {
       return false;
     }
   }
-
-  // Map<String, dynamic> toMap() {
-  //   return <String, dynamic>{
-  //     'id': id,
-  //     'titulo': titulo,
-  //     'descricao': descricao,
-  //     'prioridade': prioridade,
-  //     'dataInicio': dataInicio?.millisecondsSinceEpoch,
-  //     'dataFinal': dataFinal?.millisecondsSinceEpoch,
-  //     'listaDeTasks': listaDeTasks?.map((x) => x.toMap()).toList(),
-  //   };
-  // }
-
-  // factory BackLogEntity.fromMap(Map<String, dynamic> map) {
-  //   return BackLogEntity(
-  //     id: map['id'] != null ? map['id'] as int : null,
-  //     titulo: map['titulo'] != null ? map['titulo'] as String : null,
-  //     descricao: map['descricao'] != null ? map['descricao'] as String : null,
-  //     prioridade: map['prioridade'] != null ? map['prioridade'] as String : null,
-  //     dataInicio: map['dataInicio'] != null ? DateTime.parse(map['dataInicio'] ) : null,
-  //     dataFinal: map['dataFinal'] != null ? DateTime.parse(map['dataFinal'] ) : null,
-  //     listaDeTasks: map['listaDeTasks'] != null ? List<TaskEntity>.from((map['listaDeTasks'] as List<int>).map<TaskEntity?>((x) => TaskEntity.fromMap(x as Map<String,dynamic>),),) : null,
-  //   );
-  // }
-
 }

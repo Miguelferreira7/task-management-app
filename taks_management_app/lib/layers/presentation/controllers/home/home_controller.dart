@@ -15,27 +15,30 @@ class HomeController {
   List<BackLogEntity> mockListBacklogs = [
 
    BackLogEntity(
-        titulo: 'teste',
-        prioridade: 'high',
-        id: 0,
-        descricao: 'teste descricao',
-        dataInicio: DateTime.now(),
-        dataFinal: DateTime.now()),
+      title: 'teste',
+      priority: 'high',
+      id: 0,
+      description: 'teste descricao',
+      initialData: DateTime.now(),
+      finalData: DateTime.now()
+   ),
    BackLogEntity(
-        titulo: 'teste2',
-        prioridade: 'low',
-        id: 0,
-        descricao: 'teste descricao',
-        dataInicio: DateTime.now(),
-        dataFinal: DateTime.now()),
+     title: 'teste2',
+     priority: 'low',
+     id: 0,
+     description: 'teste descricao',
+     initialData: DateTime.now(),
+     finalData: DateTime.now()
+   ),
    BackLogEntity(
-        titulo: 'teste2',
-        prioridade: 'medium',
-        id: 0,
-        descricao: 'teste descricao',
-        dataInicio: DateTime.now(),
-        dataFinal: DateTime.now()),
-  ];
+     title: 'teste2',
+     priority: 'medium',
+     id: 0,
+     description: 'teste descricao',
+     initialData: DateTime.now(),
+     finalData: DateTime.now()
+   ),
+];
 
 
 Color returnColorOfPriority(String priority) {

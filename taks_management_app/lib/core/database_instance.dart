@@ -1,15 +1,22 @@
 import 'package:isar/isar.dart';
+import 'package:taks_management_app/layers/domain/entities/backlog_entity.dart';
 
 class DataBaseInstance {
-  late Isar db;
+  late Future<Isar> database;
 
   DataBaseInstance() {
+    database = openDB();
+  }
+
+  Future<Isar> openDB() {
     if (Isar.instanceNames.isEmpty) {
-      Isar.open(
-        [],
-        inspector: true,
+      return Isar.open(
+          [
+            BackLogEntitySchema,
+          ],
+          inspector: true
       );
     }
-    Isar.getInstance();
+    return Future.value(Isar.getInstance());
   }
 }

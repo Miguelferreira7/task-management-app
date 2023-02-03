@@ -15,12 +15,11 @@ void main() {
 
   test('should return sucess for create a task', () async {
     TaskEntity task = TaskEntity(
-        idBacklogPai: 0,
-        id: 1,
-        titulo: "teste",
-        descricao: "teste",
-        dataInicio: DateTime.now(),
-        dataFinal: DateTime.now());
+        idBacklog: 0,
+        title: "teste",
+        description: "teste",
+        initialData: DateTime.now(),
+        finalData: DateTime.now());
 
     final resquest = await useCase(task);
 
@@ -29,12 +28,11 @@ void main() {
 
     test('should return failure for create a task', () async {
     TaskEntity task = TaskEntity(
-        idBacklogPai: 0,
-        id: 1,
-        titulo: "teste",
-        descricao: "",
-        dataInicio: DateTime.now(),
-        dataFinal: DateTime.now());
+        idBacklog: 0,
+        title: "teste",
+        description: "",
+        initialData: DateTime.now(),
+        finalData: DateTime.now());
 
     final resquest = await useCase(task);
 
