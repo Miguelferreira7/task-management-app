@@ -1,5 +1,6 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
+import 'package:isar/isar.dart';
 import 'package:taks_management_app/core/utils/status_backlog_enum.dart';
 import 'package:taks_management_app/layers/domain/entities/backlog_entity.dart';
 
@@ -17,7 +18,7 @@ class HomeController {
    BackLogEntity(
       title: 'teste',
       priority: 'high',
-      id: 0,
+      id: Isar.autoIncrement,
       description: 'teste descricao',
       initialData: DateTime.now(),
       finalData: DateTime.now()
@@ -25,7 +26,7 @@ class HomeController {
    BackLogEntity(
      title: 'teste2',
      priority: 'low',
-     id: 0,
+     id: Isar.autoIncrement,
      description: 'teste descricao',
      initialData: DateTime.now(),
      finalData: DateTime.now()
@@ -33,7 +34,7 @@ class HomeController {
    BackLogEntity(
      title: 'teste2',
      priority: 'medium',
-     id: 0,
+     id: Isar.autoIncrement,
      description: 'teste descricao',
      initialData: DateTime.now(),
      finalData: DateTime.now()
