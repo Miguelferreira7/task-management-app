@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:taks_management_app/core/inject.dart';
 import 'package:taks_management_app/core/theme.dart';
 
 void main() {
+  Inject.initialize();
   runApp(const MyApp());
 }
 
