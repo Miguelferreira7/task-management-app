@@ -20,7 +20,8 @@ class HomePageController {
       title: 'teste',
       priority: 'high',
       id: Isar.autoIncrement,
-      description: 'teste descricao',
+      description: 'teste descricao, '
+          'to numa mesa com quatro cadeiras, aqui já tem três enganos por ela',
       initialData: DateTime.now(),
       finalData: DateTime.now()
    ),
@@ -45,11 +46,11 @@ class HomePageController {
   Color returnColorOfPriority(String priority) {
     String string = priority.toLowerCase().trim();
     if (string.contains('high')) {
-      return const Color(0xFFE16262);
+      return const Color.fromRGBO(239, 79, 79, 1);
     } else if (string.contains('medium')) {
-      return const Color(0xFFB8C36E);
+      return const Color.fromRGBO(221, 208, 89, 1);
     } else {
-      return const Color(0xFF71EE7E);
+      return const Color.fromRGBO(119, 206, 128, 1);
     }
   }
 
