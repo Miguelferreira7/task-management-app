@@ -53,7 +53,18 @@ class MainTheme {
           fontFamily: 'Mulish-Regular',
           fontSize: 14,
           color: Color.fromRGBO(78, 74, 74, 1),
-          fontWeight: FontWeight.w600),
+          fontWeight: FontWeight.w400),
+      headline4: TextStyle(
+          fontFamily: 'Mulish-SemiBold',
+          fontSize: 20,
+          color: Colors.black,
+          fontWeight: FontWeight.w500),
+      
+       headline5: TextStyle(
+          fontFamily: 'Mulish-Regular',
+          fontSize: 18,
+          color: Colors.black,
+          fontWeight: FontWeight.w400),
 
       subtitle2: TextStyle(
           fontFamily: "Mulish",
