@@ -114,13 +114,13 @@ Widget _buildListCards(BuildContext context) {
                       decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(10),
                           color: _controller.returnColorOfPriority(
-                              listBacklogs[index].prioridade)),
+                              listBacklogs[index].priority)),
                       child: Container(
                         padding: const EdgeInsets.only(
                             top: 4, bottom: 4, right: 8, left: 8),
                         child: Text(
                           _controller.setFirstCharacterToUpperCase(
-                              listBacklogs[index].prioridade),
+                              listBacklogs[index].priority),
                           style: const TextStyle(
                               fontFamily: "Mulish",
                               color: Colors.white,
@@ -143,7 +143,7 @@ Widget _buildListCards(BuildContext context) {
                   padding: const EdgeInsets.only(top: 8),
                   child: Text(
                     _controller.setFirstCharacterToUpperCase(
-                        (listBacklogs[index].titulo)),
+                        (listBacklogs[index].title)),
                     style: const TextStyle(
                       fontFamily: 'Mulish-Bold',
                       fontSize: 16,
@@ -156,7 +156,7 @@ Widget _buildListCards(BuildContext context) {
                   padding: const EdgeInsets.only(top: 8),
                   child: Text(
                     _controller.setFirstCharacterToUpperCase(
-                        listBacklogs[index].descricao),
+                        listBacklogs[index].description),
                     style: const TextStyle(
                       fontFamily: 'Mulish-Regular',
                       fontSize: 12,
