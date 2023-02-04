@@ -5,6 +5,7 @@ import 'package:taks_management_app/layers/presentation/controllers/home/home_co
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
+  static String ROUTE = "/home-page";
 
   @override
   State<HomePage> createState() => _HomePageState();
@@ -17,16 +18,13 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        centerTitle: false,
         title: Container(
             margin: const EdgeInsets.only(left: 8),
-            child: const Text(
+            child: Text(
               "Hi Stepanie",
-              style: TextStyle(
-                  fontFamily: "Mulish-ExtraBold",
-                  fontWeight: FontWeight.bold,
-                  fontSize: 32),
+              style: Theme.of(context).textTheme.headline1,
             )),
-        centerTitle: false,
         actions: [
           Container(
             margin: const EdgeInsets.only(right: 16),
@@ -66,10 +64,10 @@ Widget _buildFilters(BuildContext context) {
           borderRadius: BorderRadius.circular(20),
           unselectedColor: const Color(0xFFE0DFDF),
           unselectedShadow: const [],
+          selectedColor: Theme.of(context).colorScheme.tertiary,
           selectedShadow: const [],
           buttonHeight: 40,
-          textPadding:
-              const EdgeInsets.only(top: 10, bottom: 10, right: 15, left: 15)),
+          textPadding: const EdgeInsets.only(top: 10, bottom: 10, right: 15, left: 15)),
     ),
   );
 }
@@ -89,7 +87,7 @@ Widget _buildListCards(BuildContext context) {
             height: MediaQuery.of(context).size.height * 0.2,
             padding: const EdgeInsets.only(top: 8, bottom: 8, left: 16),
             margin:
-                const EdgeInsets.only(top: 16, bottom: 16, right: 16, left: 8),
+                const EdgeInsets.only(top: 8, bottom: 16, right: 16, left: 8),
             decoration: BoxDecoration(
                 color: const Color(0xFFADBADE),
                 borderRadius: BorderRadius.circular(15),
@@ -119,12 +117,8 @@ Widget _buildListCards(BuildContext context) {
                         padding: const EdgeInsets.only(
                             top: 4, bottom: 4, right: 8, left: 8),
                         child: Text(
-                          _controller.setFirstCharacterToUpperCase(
-                              listBacklogs[index].priority),
-                          style: const TextStyle(
-                              fontFamily: "Mulish",
-                              color: Colors.white,
-                              fontSize: 14),
+                          _controller.setFirstCharacterToUpperCase(listBacklogs[index].priority),
+                          style: Theme.of(context).textTheme.subtitle2,
                         ),
                       ),
                     ),
@@ -140,16 +134,11 @@ Widget _buildListCards(BuildContext context) {
                   ],
                 ),
                 Container(
-                  padding: const EdgeInsets.only(top: 8),
+                  padding: const EdgeInsets.only(top: 4),
                   child: Text(
                     _controller.setFirstCharacterToUpperCase(
                         (listBacklogs[index].title)),
-                    style: const TextStyle(
-                      fontFamily: 'Mulish-Bold',
-                      fontSize: 16,
-                      fontWeight: FontWeight.bold,
-                      color: Colors.black,
-                    ),
+                    style: Theme.of(context).textTheme.headline2,
                   ),
                 ),
                 Container(
@@ -157,12 +146,7 @@ Widget _buildListCards(BuildContext context) {
                   child: Text(
                     _controller.setFirstCharacterToUpperCase(
                         listBacklogs[index].description),
-                    style: const TextStyle(
-                      fontFamily: 'Mulish-Regular',
-                      fontSize: 12,
-                      fontWeight: FontWeight.w400,
-                      color: Color(0xFF4E4A4A),
-                    ),
+                    style: Theme.of(context).textTheme.headline3,
                   ),
                 ),
               ],
@@ -174,6 +158,7 @@ Widget _buildListCards(BuildContext context) {
 
 Widget _buildBottomNavigatorBar(BuildContext context) {
   return BottomNavigationBar(
+    elevation: 1,
       showSelectedLabels: false,
       showUnselectedLabels: false,
       items: const [
