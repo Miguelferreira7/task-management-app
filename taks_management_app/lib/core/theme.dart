@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 const Color _lightDefaultBackgroundColor = Colors.white;
 const Color _lightDefaultSecundaryColor = Colors.grey;
 const Color _lightDefaultContrastColor = Color.fromRGBO(11, 137, 254, 1);
-const Color _defaultHomePageCardColor = Color(0xFFADBADE);
+const Color _defaultBackLogTaskCardColor = Color(0xFFE7EDFC);
 
 class MainTheme {
   static final lightTheme = ThemeData(
@@ -21,6 +21,7 @@ class MainTheme {
       secondary: _lightDefaultSecundaryColor,
       tertiary: _lightDefaultContrastColor,
       background: _lightDefaultBackgroundColor,
+      tertiaryContainer: _defaultBackLogTaskCardColor
     );
   }
 

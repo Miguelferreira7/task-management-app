@@ -3,6 +3,8 @@ import 'package:taks_management_app/core/inject.dart';
 import 'package:taks_management_app/core/theme.dart';
 import 'package:taks_management_app/layers/presentation/UI/pages/home_page.dart';
 
+import 'layers/presentation/UI/pages/backlog_detail_page.dart';
+
 void main() {
   Inject.initialize();
   runApp(const MyApp());
@@ -17,7 +19,11 @@ class MyApp extends StatelessWidget {
       title: 'Flutter Demo',
       theme: MainTheme.lightTheme,
       debugShowCheckedModeBanner: false,
-      home: HomePage(),
+      initialRoute: HomePage.ROUTE,
+      routes: {
+        HomePage.ROUTE: (context) => const HomePage(),
+        BackLogDetailPage.ROUTE: (context) => BackLogDetailPage()
+      },
     );
   }
 }

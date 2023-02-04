@@ -30,6 +30,7 @@ import 'package:taks_management_app/layers/domain/usecases/delete_task/delete_ta
 import 'package:taks_management_app/layers/domain/usecases/delete_task/delete_task_usecase_imp.dart';
 import 'package:taks_management_app/layers/domain/usecases/get_list_backlogs/get_list_backlogs_usecase.dart';
 import 'package:taks_management_app/layers/domain/usecases/get_list_backlogs/get_list_backlogs_usecase_imp.dart';
+import 'package:taks_management_app/layers/presentation/controllers/detail_backlog/backlog_detail_controller.dart';
 import 'package:taks_management_app/layers/presentation/controllers/home/home_controller.dart';
 
 class Inject {
@@ -47,7 +48,6 @@ class Inject {
 
     getIt.registerLazySingleton<CreateTaskDatasource>(() => CreateTaskDatasourceImp());
     getIt.registerLazySingleton<DeleteTaskDataSource>(() => DeleteTaskDataSourceImp());
-
 
     //REPOSITORIES
     getIt.registerLazySingleton<GetListBacklogsRepository>(() => GetListBackLogsRepositoryImp(getIt()));
@@ -68,6 +68,7 @@ class Inject {
 
     //CONTROLLERS
     getIt.registerLazySingleton<HomePageController>(() => HomePageController());
+    getIt.registerLazySingleton<BackLogDetailPageController>(() => BackLogDetailPageController());
 
   }
 }

@@ -20,8 +20,9 @@ class HomePageController {
       title: 'teste',
       priority: 'high',
       id: Isar.autoIncrement,
-      description: 'teste descricao, '
-          'to numa mesa com quatro cadeiras, aqui já tem três enganos por ela',
+      description: 'To numa mesa com quatro cadeiras, aqui já tem três enganados por ela'
+          ' bebendo esperando a rasteira, que tu vai levar dela, fica'
+          ' tranquilo que a aquarta cadeira te espera',
       initialData: DateTime.now(),
       finalData: DateTime.now()
    ),
@@ -56,7 +57,6 @@ class HomePageController {
 
   String setFirstCharacterToUpperCase(String string) {
     String newString = string.replaceFirst(string[0], string[0].toUpperCase());
-
     return newString;
   }
 }

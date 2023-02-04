@@ -1,11 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:group_button/group_button.dart';
 import 'package:taks_management_app/layers/domain/entities/backlog_entity.dart';
+import 'package:taks_management_app/layers/domain/entities/task_entity.dart';
 import 'package:taks_management_app/layers/presentation/controllers/home/home_controller.dart';
+
+import 'backlog_detail_page.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
-  static String ROUTE = "/home-page";
+
+  static const String ROUTE = "/home-page";
 
   @override
   State<HomePage> createState() => _HomePageState();
@@ -67,7 +71,8 @@ Widget _buildFilters(BuildContext context) {
           selectedColor: Theme.of(context).colorScheme.tertiary,
           selectedShadow: const [],
           buttonHeight: 40,
-          textPadding: const EdgeInsets.only(top: 10, bottom: 10, right: 15, left: 15)),
+          textPadding:
+              const EdgeInsets.only(top: 10, bottom: 10, right: 15, left: 15)),
     ),
   );
 }
@@ -83,73 +88,111 @@ Widget _buildListCards(BuildContext context) {
         shrinkWrap: true,
         itemBuilder: (context, index) {
           List<BackLogEntity> listBacklogs = _controller.mockListBacklogs;
-          return Container(
-            height: MediaQuery.of(context).size.height * 0.2,
-            padding: const EdgeInsets.only(top: 8, bottom: 8, left: 16),
-            margin:
-                const EdgeInsets.only(top: 8, bottom: 16, right: 16, left: 8),
-            decoration: BoxDecoration(
-                color: const Color(0xFFADBADE),
-                borderRadius: BorderRadius.circular(15),
-                boxShadow: [
+          return GestureDetector(
+            onTap: () {
+              List<TaskEntity> taskList = [
+                TaskEntity(
+                    id: 1,
+                    title: "Remove the dropped garbage",
+                    description: "Remove all garbage in the street",
+                    initialData: DateTime.now(),
+                    finalData: DateTime.now(),
+                    idBacklog: 1),
+                TaskEntity(
+                    id: 2,
+                    title: "Clear the trash cans",
+                    description:
+                        "Remove all sacks from the trash cans around the street",
+                    initialData: DateTime.now(),
+                    finalData: DateTime.now(),
+                    idBacklog: 1),
+              ];
+
+              BackLogEntity backLogSelected = BackLogEntity(
+                  id: 1,
+                  title: "Clear the Street",
+                  description:
+                      "Clear all the street, remove the trash cans and the dropped garbage",
+                  priority: "high",
+                  initialData: DateTime.now(),
+                  finalData: DateTime.now(),
+                  taskList: taskList);
+
+              Navigator.of(context).pushNamed(BackLogDetailPage.ROUTE,
+                  arguments: backLogSelected);
+            },
+            child: Container(
+              height: MediaQuery.of(context).size.height * 0.2,
+              padding: const EdgeInsets.only(top: 8, bottom: 8, left: 16),
+              margin:
+                  const EdgeInsets.only(top: 8, bottom: 16, right: 16, left: 8),
+              decoration: BoxDecoration(
+                  color: Theme.of(context).colorScheme.tertiaryContainer,
+                  borderRadius: BorderRadius.circular(15),
+                  boxShadow: [
                   BoxShadow(
                       color: const Color(0xFF4E4A4A).withOpacity(0.50),
                       blurRadius: 10.0,
                       spreadRadius: 2.0,
                       offset: const Offset(
-                        7.0, // Move to right 7.0 horizontally
-                        8.0, // Move to bottom 8.0 Vertically
+                        3.0, // Move to right 7.0 horizontally
+                        4.0, // Move to bottom 8.0 Vertically
                       ))
-                ]),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
-                    Container(
-                      decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(10),
-                          color: _controller.returnColorOfPriority(
-                              listBacklogs[index].priority)),
-                      child: Container(
-                        padding: const EdgeInsets.only(
-                            top: 4, bottom: 4, right: 8, left: 8),
-                        child: Text(
-                          _controller.setFirstCharacterToUpperCase(listBacklogs[index].priority),
-                          style: Theme.of(context).textTheme.subtitle2,
+                  ]),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      Container(
+                        decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(10),
+                            color: _controller.returnColorOfPriority(
+                                listBacklogs[index].priority)),
+                        child: Container(
+                          padding: const EdgeInsets.only(
+                              top: 4, bottom: 4, right: 8, left: 8),
+                          child: Text(
+                            _controller.setFirstCharacterToUpperCase(
+                                listBacklogs[index].priority),
+                            style: Theme.of(context).textTheme.subtitle2,
+                          ),
                         ),
                       ),
+                      SizedBox(
+                        child: IconButton(
+                            onPressed: () {},
+                            padding: EdgeInsets.zero,
+                            icon: const Icon(
+                              Icons.more_vert,
+                              color: Colors.black,
+                            )),
+                      )
+                    ],
+                  ),
+                  Container(
+                    padding: const EdgeInsets.only(top: 4),
+                    child: Text(
+                      _controller.setFirstCharacterToUpperCase(
+                          (listBacklogs[index].title)),
+                      style: Theme.of(context).textTheme.headline2,
                     ),
-                    SizedBox(
-                      child: IconButton(
-                          onPressed: () {},
-                          padding: EdgeInsets.zero,
-                          icon: const Icon(
-                            Icons.more_vert,
-                            color: Colors.white,
-                          )),
-                    )
-                  ],
-                ),
-                Container(
-                  padding: const EdgeInsets.only(top: 4),
-                  child: Text(
-                    _controller.setFirstCharacterToUpperCase(
-                        (listBacklogs[index].title)),
-                    style: Theme.of(context).textTheme.headline2,
                   ),
-                ),
-                Container(
-                  padding: const EdgeInsets.only(top: 8),
-                  child: Text(
-                    _controller.setFirstCharacterToUpperCase(
-                        listBacklogs[index].description),
-                    style: Theme.of(context).textTheme.headline3,
+                  Container(
+                    padding: const EdgeInsets.only(top: 8, right: 16),
+                    child: Text(
+                      _controller.setFirstCharacterToUpperCase(
+                          listBacklogs[index].description),
+                      style: Theme.of(context).textTheme.headline3,
+                      maxLines: 3,
+                      textAlign: TextAlign.justify,
+                      overflow: TextOverflow.ellipsis,
+                    ),
                   ),
-                ),
-              ],
+                ],
+              ),
             ),
           );
         }),
@@ -158,7 +201,7 @@ Widget _buildListCards(BuildContext context) {
 
 Widget _buildBottomNavigatorBar(BuildContext context) {
   return BottomNavigationBar(
-    elevation: 1,
+      elevation: 1,
       showSelectedLabels: false,
       showUnselectedLabels: false,
       items: const [
