@@ -7,11 +7,6 @@ import 'package:taks_management_app/layers/data/repositories/delete_backlog_repo
 import 'package:taks_management_app/layers/domain/usecases/delete_backlog/delete_backlog_usecase.dart';
 import 'package:taks_management_app/layers/domain/usecases/delete_backlog/delete_backlog_usecase_imp.dart';
 
-// DeleteBacklogDataSource datasource = DeleteBacklogDataSourceImp();
-// DeleteBacklogRepositoryImp repository = DeleteBacklogRepositoryImp(datasource);
-// DeleteBacklogUseCase useCase = DeleteBacklogUseCaseImp(repository);
-
-
 
 void main() {
 DeleteBacklogDataSource datasource = DeleteBacklogDataSourceImp();
