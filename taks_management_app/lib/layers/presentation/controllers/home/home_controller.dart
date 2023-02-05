@@ -8,9 +8,9 @@ class HomePageController {
   HomePageController();
 
   List<String> listOptionsFilter = [
-    statusBacklogEnumMap[StatusBacklogEnum.completed]!,
-    statusBacklogEnumMap[StatusBacklogEnum.upcoming]!,
     statusBacklogEnumMap[StatusBacklogEnum.inProgress]!,
+    statusBacklogEnumMap[StatusBacklogEnum.upcoming]!,
+    statusBacklogEnumMap[StatusBacklogEnum.completed]!,
   ];
   ScrollController scrollController = ScrollController();
 
