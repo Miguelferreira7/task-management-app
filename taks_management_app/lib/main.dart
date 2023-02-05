@@ -3,7 +3,7 @@ import 'package:taks_management_app/core/inject.dart';
 import 'package:taks_management_app/core/theme.dart';
 import 'package:taks_management_app/layers/presentation/UI/pages/home_page.dart';
 
-import 'layers/presentation/UI/pages/backlog_detail_page.dart';
+import 'layers/presentation/UI/pages/detail_backlog_page.dart';
 
 void main() {
   Inject.initialize();

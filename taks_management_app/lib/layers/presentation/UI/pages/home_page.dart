@@ -4,7 +4,7 @@ import 'package:taks_management_app/layers/domain/entities/backlog_entity.dart';
 import 'package:taks_management_app/layers/domain/entities/task_entity.dart';
 import 'package:taks_management_app/layers/presentation/controllers/home/home_controller.dart';
 
-import 'backlog_detail_page.dart';
+import 'detail_backlog_page.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
