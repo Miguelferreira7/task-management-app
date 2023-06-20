@@ -3,6 +3,7 @@ import 'package:taks_management_app/layers/presentation/controllers/create_task/
 
 class CreateTaskPage extends StatefulWidget {
   const CreateTaskPage({super.key});
+  static const String ROUTE = "/create-task-page";
 
   @override
   State<CreateTaskPage> createState() => _CreateTaskPageState();

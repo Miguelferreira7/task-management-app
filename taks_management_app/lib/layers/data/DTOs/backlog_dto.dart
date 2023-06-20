@@ -12,11 +12,13 @@ class BackLogDTO extends BackLogEntity{
   String priority;
   DateTime initialData;
   DateTime finalData;
+  String progressStatus;
 
   List<TaskEntity>? taskList;
 
   BackLogDTO({
   required this.id,
+  required this.progressStatus,
   required this.title,
   required this.description,
   required this.priority,
@@ -26,6 +28,7 @@ class BackLogDTO extends BackLogEntity{
   }) : super(
     id: id,
     priority: priority,
+    progressStatus: progressStatus,
     title: title,
     description: description,
     initialData: initialData,
@@ -43,12 +46,13 @@ class BackLogDTO extends BackLogEntity{
       'priority': priority,
       'initialData': initialData.millisecondsSinceEpoch,
       'finalData': finalData.millisecondsSinceEpoch,
-
+      'progressStatus': progressStatus
     };
   }
 
   factory BackLogDTO.fromMap(Map<String, dynamic> map) {
     return BackLogDTO(
+      progressStatus: map['progressStatus'] != null ? map['progressStatus'] as String : "",
       id: map['id'] != null ? map['id'] as int : 0,
       title: map['title'] != null ? map['title'] as String : "",
       description: map['description'] != null ? map['description'] as String : "",

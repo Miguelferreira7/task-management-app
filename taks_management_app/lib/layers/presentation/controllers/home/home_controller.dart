@@ -1,8 +1,10 @@
-// ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
+import 'package:get_it/get_it.dart';
 import 'package:isar/isar.dart';
 import 'package:taks_management_app/core/utils/enums/status_backlog_enum.dart';
+import 'package:taks_management_app/layers/data/datasources/get_list_backlogs_datasource.dart';
 import 'package:taks_management_app/layers/domain/entities/backlog_entity.dart';
+import 'package:mobx/mobx.dart';
 
 class HomePageController {
   HomePageController();
@@ -14,11 +16,20 @@ class HomePageController {
   ];
   ScrollController scrollController = ScrollController();
 
+  Future<void> getBacklogList() async {
+    final getListBacklogs = GetIt.instance.get<GetListBackLogsDatasource>();
+
+    final result = getListBacklogs;
+
+
+  }
+
   List<BackLogEntity> mockListBacklogs = [
 
    BackLogEntity(
       title: 'teste',
       priority: 'high',
+      progressStatus: "in_progress",
       id: Isar.autoIncrement,
       description: 'To numa mesa com quatro cadeiras, aqui já tem três enganados por ela'
           ' bebendo esperando a rasteira, que tu vai levar dela, fica'
@@ -29,6 +40,7 @@ class HomePageController {
    BackLogEntity(
      title: 'teste2',
      priority: 'low',
+     progressStatus: "completed",
      id: Isar.autoIncrement,
      description: 'teste descricao',
      initialData: DateTime.now(),
@@ -37,6 +49,7 @@ class HomePageController {
    BackLogEntity(
      title: 'teste2',
      priority: 'medium',
+     progressStatus: 'upcoming',
      id: Isar.autoIncrement,
      description: 'teste descricao',
      initialData: DateTime.now(),

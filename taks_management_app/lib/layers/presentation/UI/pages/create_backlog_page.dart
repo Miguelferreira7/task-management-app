@@ -5,6 +5,7 @@ import '../../controllers/create_backlog/create_backlog_page_controller.dart';
 
 class CreateBacklogPage extends StatefulWidget {
   const CreateBacklogPage({super.key});
+  static const String ROUTE = "/create-backlog-page";
 
   @override
   State<CreateBacklogPage> createState() => _CreateBacklogPageState();
@@ -19,14 +20,14 @@ class _CreateBacklogPageState extends State<CreateBacklogPage> {
     return Scaffold(
       appBar: AppBar(
         leading: IconButton(
-            onPressed: () {},
+            onPressed: () => Navigator.of(context).pop(),
             icon: const Icon(
               Icons.close,
               color: Color(0xFF2F394B),
             )),
         centerTitle: true,
         title: Text(
-          "Create New Backlog",
+          "CREATE NEW BACKLOG",
           style: Theme.of(context).textTheme.headline4,
         ),
       ),

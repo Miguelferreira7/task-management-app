@@ -32,6 +32,7 @@ import 'package:taks_management_app/layers/domain/usecases/get_list_backlogs/get
 import 'package:taks_management_app/layers/domain/usecases/get_list_backlogs/get_list_backlogs_usecase_imp.dart';
 import 'package:taks_management_app/layers/presentation/controllers/detail_backlog/backlog_detail_controller.dart';
 import 'package:taks_management_app/layers/presentation/controllers/home/home_controller.dart';
+import 'package:taks_management_app/layers/presentation/stores/backlog_store.dart';
 
 class Inject {
 
@@ -70,5 +71,8 @@ class Inject {
     getIt.registerLazySingleton<HomePageController>(() => HomePageController());
     getIt.registerLazySingleton<BackLogDetailPageController>(() => BackLogDetailPageController());
 
+    //MOBX STORES
+
+    getIt.registerSingleton<BacklogStore>(BacklogStore());
   }
 }

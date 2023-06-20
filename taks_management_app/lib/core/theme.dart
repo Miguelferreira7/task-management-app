@@ -41,7 +41,7 @@ class MainTheme {
       headline1: TextStyle(
           fontFamily: 'Mulish-ExtraBold',
           color: Colors.black,
-          fontSize: 32,
+          fontSize: 30,
           fontWeight: FontWeight.bold),
 
       headline2: TextStyle(
@@ -55,6 +55,7 @@ class MainTheme {
           fontSize: 14,
           color: Color.fromRGBO(78, 74, 74, 1),
           fontWeight: FontWeight.w400),
+
       headline4: TextStyle(
           fontFamily: 'Mulish-SemiBold',
           fontSize: 20,

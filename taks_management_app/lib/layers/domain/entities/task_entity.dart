@@ -6,6 +6,7 @@ part 'task_entity.g.dart';
 class TaskEntity {
   int? id;
   int? idBacklog;
+  String? progressStatus;
   String? title;
   String? description;
   DateTime? initialData;
@@ -14,6 +15,7 @@ class TaskEntity {
   TaskEntity({
    this.id,
    this.idBacklog,
+   this.progressStatus,
    this.title,
    this.description,
    this.initialData,

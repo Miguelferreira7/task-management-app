@@ -37,14 +37,19 @@ const BackLogEntitySchema = CollectionSchema(
       name: r'priority',
       type: IsarType.string,
     ),
-    r'taskList': PropertySchema(
+    r'progressStatus': PropertySchema(
       id: 4,
+      name: r'progressStatus',
+      type: IsarType.string,
+    ),
+    r'taskList': PropertySchema(
+      id: 5,
       name: r'taskList',
       type: IsarType.objectList,
       target: r'TaskEntity',
     ),
     r'title': PropertySchema(
-      id: 5,
+      id: 6,
       name: r'title',
       type: IsarType.string,
     )
@@ -71,6 +76,7 @@ int _backLogEntityEstimateSize(
   var bytesCount = offsets.last;
   bytesCount += 3 + object.description.length * 3;
   bytesCount += 3 + object.priority.length * 3;
+  bytesCount += 3 + object.progressStatus.length * 3;
   {
     final list = object.taskList;
     if (list != null) {
@@ -99,13 +105,14 @@ void _backLogEntitySerialize(
   writer.writeDateTime(offsets[1], object.finalData);
   writer.writeDateTime(offsets[2], object.initialData);
   writer.writeString(offsets[3], object.priority);
+  writer.writeString(offsets[4], object.progressStatus);
   writer.writeObjectList<TaskEntity>(
-    offsets[4],
+    offsets[5],
     allOffsets,
     TaskEntitySchema.serialize,
     object.taskList,
   );
-  writer.writeString(offsets[5], object.title);
+  writer.writeString(offsets[6], object.title);
 }
 
 BackLogEntity _backLogEntityDeserialize(
@@ -120,13 +127,14 @@ BackLogEntity _backLogEntityDeserialize(
     id: id,
     initialData: reader.readDateTime(offsets[2]),
     priority: reader.readString(offsets[3]),
+    progressStatus: reader.readString(offsets[4]),
     taskList: reader.readObjectList<TaskEntity>(
-      offsets[4],
+      offsets[5],
       TaskEntitySchema.deserialize,
       allOffsets,
       TaskEntity(),
     ),
-    title: reader.readString(offsets[5]),
+    title: reader.readString(offsets[6]),
   );
   return object;
 }
@@ -147,13 +155,15 @@ P _backLogEntityDeserializeProp<P>(
     case 3:
       return (reader.readString(offset)) as P;
     case 4:
+      return (reader.readString(offset)) as P;
+    case 5:
       return (reader.readObjectList<TaskEntity>(
         offset,
         TaskEntitySchema.deserialize,
         allOffsets,
         TaskEntity(),
       )) as P;
-    case 5:
+    case 6:
       return (reader.readString(offset)) as P;
     default:
       throw IsarError('Unknown property with id $propertyId');
@@ -695,6 +705,142 @@ extension BackLogEntityQueryFilter
   }
 
   QueryBuilder<BackLogEntity, BackLogEntity, QAfterFilterCondition>
+      progressStatusEqualTo(
+    String value, {
+    bool caseSensitive = true,
+  }) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(FilterCondition.equalTo(
+        property: r'progressStatus',
+        value: value,
+        caseSensitive: caseSensitive,
+      ));
+    });
+  }
+
+  QueryBuilder<BackLogEntity, BackLogEntity, QAfterFilterCondition>
+      progressStatusGreaterThan(
+    String value, {
+    bool include = false,
+    bool caseSensitive = true,
+  }) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(FilterCondition.greaterThan(
+        include: include,
+        property: r'progressStatus',
+        value: value,
+        caseSensitive: caseSensitive,
+      ));
+    });
+  }
+
+  QueryBuilder<BackLogEntity, BackLogEntity, QAfterFilterCondition>
+      progressStatusLessThan(
+    String value, {
+    bool include = false,
+    bool caseSensitive = true,
+  }) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(FilterCondition.lessThan(
+        include: include,
+        property: r'progressStatus',
+        value: value,
+        caseSensitive: caseSensitive,
+      ));
+    });
+  }
+
+  QueryBuilder<BackLogEntity, BackLogEntity, QAfterFilterCondition>
+      progressStatusBetween(
+    String lower,
+    String upper, {
+    bool includeLower = true,
+    bool includeUpper = true,
+    bool caseSensitive = true,
+  }) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(FilterCondition.between(
+        property: r'progressStatus',
+        lower: lower,
+        includeLower: includeLower,
+        upper: upper,
+        includeUpper: includeUpper,
+        caseSensitive: caseSensitive,
+      ));
+    });
+  }
+
+  QueryBuilder<BackLogEntity, BackLogEntity, QAfterFilterCondition>
+      progressStatusStartsWith(
+    String value, {
+    bool caseSensitive = true,
+  }) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(FilterCondition.startsWith(
+        property: r'progressStatus',
+        value: value,
+        caseSensitive: caseSensitive,
+      ));
+    });
+  }
+
+  QueryBuilder<BackLogEntity, BackLogEntity, QAfterFilterCondition>
+      progressStatusEndsWith(
+    String value, {
+    bool caseSensitive = true,
+  }) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(FilterCondition.endsWith(
+        property: r'progressStatus',
+        value: value,
+        caseSensitive: caseSensitive,
+      ));
+    });
+  }
+
+  QueryBuilder<BackLogEntity, BackLogEntity, QAfterFilterCondition>
+      progressStatusContains(String value, {bool caseSensitive = true}) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(FilterCondition.contains(
+        property: r'progressStatus',
+        value: value,
+        caseSensitive: caseSensitive,
+      ));
+    });
+  }
+
+  QueryBuilder<BackLogEntity, BackLogEntity, QAfterFilterCondition>
+      progressStatusMatches(String pattern, {bool caseSensitive = true}) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(FilterCondition.matches(
+        property: r'progressStatus',
+        wildcard: pattern,
+        caseSensitive: caseSensitive,
+      ));
+    });
+  }
+
+  QueryBuilder<BackLogEntity, BackLogEntity, QAfterFilterCondition>
+      progressStatusIsEmpty() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(FilterCondition.equalTo(
+        property: r'progressStatus',
+        value: '',
+      ));
+    });
+  }
+
+  QueryBuilder<BackLogEntity, BackLogEntity, QAfterFilterCondition>
+      progressStatusIsNotEmpty() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(FilterCondition.greaterThan(
+        property: r'progressStatus',
+        value: '',
+      ));
+    });
+  }
+
+  QueryBuilder<BackLogEntity, BackLogEntity, QAfterFilterCondition>
       taskListIsNull() {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(const FilterCondition.isNull(
@@ -1005,6 +1151,20 @@ extension BackLogEntityQuerySortBy
     });
   }
 
+  QueryBuilder<BackLogEntity, BackLogEntity, QAfterSortBy>
+      sortByProgressStatus() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addSortBy(r'progressStatus', Sort.asc);
+    });
+  }
+
+  QueryBuilder<BackLogEntity, BackLogEntity, QAfterSortBy>
+      sortByProgressStatusDesc() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addSortBy(r'progressStatus', Sort.desc);
+    });
+  }
+
   QueryBuilder<BackLogEntity, BackLogEntity, QAfterSortBy> sortByTitle() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'title', Sort.asc);
@@ -1084,6 +1244,20 @@ extension BackLogEntityQuerySortThenBy
     });
   }
 
+  QueryBuilder<BackLogEntity, BackLogEntity, QAfterSortBy>
+      thenByProgressStatus() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addSortBy(r'progressStatus', Sort.asc);
+    });
+  }
+
+  QueryBuilder<BackLogEntity, BackLogEntity, QAfterSortBy>
+      thenByProgressStatusDesc() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addSortBy(r'progressStatus', Sort.desc);
+    });
+  }
+
   QueryBuilder<BackLogEntity, BackLogEntity, QAfterSortBy> thenByTitle() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'title', Sort.asc);
@@ -1126,6 +1300,14 @@ extension BackLogEntityQueryWhereDistinct
     });
   }
 
+  QueryBuilder<BackLogEntity, BackLogEntity, QDistinct>
+      distinctByProgressStatus({bool caseSensitive = true}) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addDistinctBy(r'progressStatus',
+          caseSensitive: caseSensitive);
+    });
+  }
+
   QueryBuilder<BackLogEntity, BackLogEntity, QDistinct> distinctByTitle(
       {bool caseSensitive = true}) {
     return QueryBuilder.apply(this, (query) {
@@ -1164,6 +1346,13 @@ extension BackLogEntityQueryProperty
   QueryBuilder<BackLogEntity, String, QQueryOperations> priorityProperty() {
     return QueryBuilder.apply(this, (query) {
       return query.addPropertyName(r'priority');
+    });
+  }
+
+  QueryBuilder<BackLogEntity, String, QQueryOperations>
+      progressStatusProperty() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addPropertyName(r'progressStatus');
     });
   }
 
